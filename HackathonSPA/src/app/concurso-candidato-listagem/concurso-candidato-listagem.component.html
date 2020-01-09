@@ -1,0 +1,38 @@
+<head>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+<div class="container blue lighten-5 z-depth-5">
+    <h5>Detalhes do concurso</h5>
+<table class="table">
+    <tr>
+        <th>Nome do Candidato</th>
+        <th>Nome do Concurso</th>
+        <th>Nota</th>
+    </tr>
+    <tr *ngFor="let concursoCandidato of concursoCandidatos">
+        <td>{{concursoCandidato.nomeCandidato}}</td>
+        <td>{{concursoCandidato.nomeConcurso}}</td>
+        <td>{{concursoCandidato.nota}}</td>
+        <td>
+            <button class="btn waves-effect waves-light right"
+            (click)="exibirModalNota(concursoCandidato)">Atualizar nota</button>
+        </td>
+    </tr>
+</table>
+</div>
+
+<div id="modalNota" class="modal" *ngIf="exibirModal">
+    <div class="modal-content">
+        <h5>Insira a nota do Candidato {{concursoCandidato.nomeCandidato}}</h5>
+        <input type="number" id="nota" name="nota" [(ngModel)]="concursoCandidato.nota">
+        <button class="btn red darken-4 z-depth-5" (click)="atualizarNota(concursoCandidato.nota)">
+            atualizar
+        </button>
+        <button class="btn black z-depth-5" (click)="exibirModalNota(null)">
+            Fechar
+        </button>
+    </div>
+</div>
+</body>

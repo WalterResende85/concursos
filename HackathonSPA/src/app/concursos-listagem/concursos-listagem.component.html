@@ -1,0 +1,80 @@
+<head>
+    <title>Concursos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+<body class=" blue lighten-5">
+    <div class="container">
+        <div>
+            <a routerLink="/cadastrarConcurso" class="btn waves-effect waves-light z-depth-5">Novo Concurso</a>
+        </div>
+        <div>
+            <h4>Listar Concursos</h4>
+
+            <table class="table">
+                <tr>
+                    <td>Id</td>
+                    <td>Nome</td>
+                    <td>Quantidade De Vagas</td>
+                </tr>
+                <tr *ngFor="let concurso of concursos">
+                    <td>{{concurso.id}}</td>
+                    <td>{{concurso.nome}}</td>
+                    <td>{{concurso.quantidadeVagas}}</td>
+                    <td>
+                        <button id="btnIncreverCandidato" class="btn green darken-4 z-depth-5"
+                            (click)="toggleModalIncreverCandidato(concurso)">
+                            Me inscrever
+                        </button>
+                        <button class="btn blue darken-1 z-depth-5" (click)=" listarCandidatosPorConcurso(concurso.id)">
+                            Detalhes
+                        </button>
+
+                    </td>
+                    <td>
+                        <a routerLink="/editarConcurso/{{concurso.id}}">
+                            <button class="btn blue darken-4 z-depth-5">
+                                Editar
+                            </button>
+                        </a>
+                        <button id="btnRemover" class="btn red darken-4 z-depth-5"
+                            (click)="toggleModalExcluir(concurso)">
+                            Remover
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            </table>
+        </div>
+    </div>
+    <div id="modalIncreverCandidato" class="modal" *ngIf="exibirModalIncreverCandidato">
+        <div class="modalIncreverCandidato-content">
+            <h5>Cadatrar Candidato no concurso {{concurso.nome}}</h5>
+            <div class="form-group">
+                <label for="candidato">Candidatos</label>
+                <select [(ngModel)]="concursoCandidato.idCandidato" name="cadidato">
+                    <option *ngFor="let candidato of candidatos" [ngValue]="candidato.id">{{ candidato.nome }}</option>
+                </select>
+            </div>
+            <button class="btn waves-effect waves-light z-depth-5" (click)="InscreverCandidato(concurso.id)">
+                Cadastrar
+            </button>
+            <button class="btn black z-depth-5" (click)="toggleModalIncreverCandidato(null)">
+                Fechar
+            </button>
+        </div>
+    </div>
+    <div id="modalRemover" class="modal" *ngIf="exibirModal">
+        <div class="modal-content">
+            <h5>Deseja mesmo remover o concurso {{concurso.nome}} ?</h5>
+            <button class="btn red darken-4 z-depth-5" (click)="remover()">
+                Remover
+            </button>
+            <button class="btn black z-depth-5" (click)="toggleModalExcluir(null)">
+                Fechar
+            </button>
+        </div>
+    </div>
+</body>

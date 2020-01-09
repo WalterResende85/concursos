@@ -1,0 +1,51 @@
+<head>
+    <title>Candidatos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+<body class=" blue lighten-5">
+
+    <div class="container">
+        <div>
+            <a routerLink="/cadastrarCandidato" class="btn waves-effect waves-light z-depth-5">Novo Candidato</a>
+        </div>
+        <div>
+            <h4>Listar dos Candidatos</h4>
+            <table class="table">
+                <tr>
+                    <td>Id</td>
+                    <td>Nome</td>
+                    <td>Cidade</td>
+                </tr>
+                <tr *ngFor="let candidato of candidatos">
+                    <td>{{candidato.id}}</td>
+                    <td>{{candidato.nome}}</td>
+                    <td>{{candidato.cidade}}</td>
+                    <td>
+                        <a routerLink="/editarCandidato/{{candidato.id}}">
+                            <button type="submit" class="btn blue darken-4 z-depth-2">
+                                Editar
+                            </button>
+                        </a>
+                        <button id="btnRemover" class="btn red darken-4 z-depth-2"
+                            (click)="toggleModalExcluir(candidato)">
+                            Remover
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="modalRemover" class="modal" *ngIf="exibirModal">
+        <div class="modal-content">
+            <h5>Deseja mesmo remover o candidato {{candidato.nome}} ?</h5>
+            <button class="btn orange darken-4 z-depth-2" (click)="remover()">
+                Remover
+            </button>
+            <button class="btn black z-depth-2 " (click)="toggleModalExcluir(null)">
+                Fechar
+            </button>
+        </div>
+    </div>
+</body>
