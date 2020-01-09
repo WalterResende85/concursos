@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stefanini.concurso.DTO.ConcursoCandidatoDTO;
-import com.stefanini.concurso.model.ConcursoCandidato;
 import com.stefanini.concurso.model.ConcursoCandidatoKey;
 import com.stefanini.concurso.service.ConcursoCandidatoService;
 
