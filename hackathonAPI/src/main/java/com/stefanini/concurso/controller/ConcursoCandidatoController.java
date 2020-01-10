@@ -1,6 +1,5 @@
 package com.stefanini.concurso.controller;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stefanini.concurso.DTO.ConcursoCandidatoDTO;
+import com.stefanini.concurso.exceptions.BusinessException;
 import com.stefanini.concurso.model.ConcursoCandidatoKey;
 import com.stefanini.concurso.service.ConcursoCandidatoService;
 
@@ -26,40 +26,57 @@ public class ConcursoCandidatoController {
 	ConcursoCandidatoService concursoCandidatoService;
 
 	@PostMapping
-	public ConcursoCandidatoDTO salvar(@RequestBody ConcursoCandidatoDTO concursoCandidatoDTO) {
-		return concursoCandidatoService.salvar(concursoCandidatoDTO);
-	}
-	@PutMapping("/{idCandidato}/{idConcurso}")
-	public ResponseEntity<ConcursoCandidatoDTO> atualizar(@PathVariable Long idCandidato, @PathVariable Long idConcurso, @RequestBody ConcursoCandidatoDTO dto) {
-		ConcursoCandidatoDTO existente = concursoCandidatoService.buscar(new ConcursoCandidatoKey(idCandidato, idConcurso));
-		if (existente == null) {
-			return ResponseEntity.notFound().build();
+	public ResponseEntity<Object> salvar(@RequestBody ConcursoCandidatoDTO concursoCandidatoDTO) {
+		try {
+			return ResponseEntity.ok(concursoCandidatoService.salvar(concursoCandidatoDTO));
+		} catch (BusinessException e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
 		}
-		BeanUtils.copyProperties(dto.tansformarParaEntidade(), existente);
-		existente = concursoCandidatoService.salvar(existente);
-		return ResponseEntity.ok(existente);
 	}
-	
+
+	@PutMapping("/{idCandidato}/{idConcurso}")
+	public ResponseEntity<Object> atualizar(@PathVariable Long idCandidato, @PathVariable Long idConcurso,
+			@RequestBody ConcursoCandidatoDTO dto) {
+		try {
+			return ResponseEntity.ok(concursoCandidatoService.salvar(idCandidato, idConcurso, dto));
+		} catch (BusinessException e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+	}
+
 	@GetMapping("/{idCandidato}/{idConcurso}")
-	public ConcursoCandidatoDTO buscar(@PathVariable Long idCandidato, @PathVariable Long idConcurso) {
-		return concursoCandidatoService.buscar(new ConcursoCandidatoKey(idCandidato, idConcurso));
+	public ResponseEntity<Object> buscar(@PathVariable Long idCandidato, @PathVariable Long idConcurso) {
+		try {
+			return ResponseEntity
+					.ok(concursoCandidatoService.buscar(new ConcursoCandidatoKey(idCandidato, idConcurso)));
+		} catch (BusinessException e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
 	}
-	
+
 	@GetMapping
 	public Iterable<ConcursoCandidatoDTO> buscarTodos() {
 		return concursoCandidatoService.buscarTodos();
 	}
 
 	@DeleteMapping("/{idCandidato}/{idConcurso}")
-	public void deletar(@PathVariable Long idCandidato, @PathVariable Long idConcurso) {
-		concursoCandidatoService.deletar(new ConcursoCandidatoKey(idCandidato, idConcurso));
+	public ResponseEntity<Object> deletar(@PathVariable Long idCandidato, @PathVariable Long idConcurso) {
+		try {
+			concursoCandidatoService.deletar(new ConcursoCandidatoKey(idCandidato, idConcurso));
+			return ResponseEntity.ok().build();
+		} catch (BusinessException e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+	}
 
-	}
-	
 	@GetMapping("/{idConcurso}")
-	public Iterable<ConcursoCandidatoDTO> buscarCandidatosPorConcurso(@PathVariable Long idConcurso){
-		return concursoCandidatoService.buscarCandidatosPorconcurso(idConcurso);
+	public ResponseEntity<Object> buscarCandidatosPorConcurso(@PathVariable Long idConcurso) {
+		try {
+			return ResponseEntity.ok(concursoCandidatoService.buscarCandidatosPorconcurso(idConcurso));
+		}catch(BusinessException e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+		
 	}
-	
 
 }

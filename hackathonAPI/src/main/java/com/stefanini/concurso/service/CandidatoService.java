@@ -1,8 +1,14 @@
 package com.stefanini.concurso.service;
 
+import java.util.Objects;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
+import com.stefanini.concurso.DTO.CandidatoDTO;
+import com.stefanini.concurso.exceptions.BusinessException;
 import com.stefanini.concurso.model.Candidato;
 import com.stefanini.concurso.repository.CandidatoRepository;
 import com.stefanini.concurso.repository.ConcursoCandidatoRepository;
@@ -12,25 +18,56 @@ public class CandidatoService {
 
 	@Autowired
 	CandidatoRepository candidatoRepository;
-	
+
 	@Autowired
 	ConcursoCandidatoRepository concursoCandidatoRepository;
-	
-	public Candidato salvar(Candidato candidato) {
-		return candidatoRepository.save(candidato);
+
+	public CandidatoDTO salvar(CandidatoDTO dto) {
+		validarCandidato(dto);
+
+		Candidato candidato = candidatoRepository.save(dto.tansformarParaEntidade());
+		return candidato.transformarParaCandidatoDTO();
 	}
 
-	public Candidato buscar(Long id) {
-		return candidatoRepository.findById(id).orElse(null);
+	public CandidatoDTO salvar(Long id, CandidatoDTO dto) {
+		CandidatoDTO candidatoExistente = buscar(id);
+		BeanUtils.copyProperties(dto.tansformarParaEntidade(), candidatoExistente);
+		candidatoExistente.setId(id);
+		return salvar(candidatoExistente);
 	}
-	
+
+	public CandidatoDTO buscar(Long id) {
+		if (Objects.nonNull(id)) {
+			return candidatoRepository.findById(id)
+					.orElseThrow(() -> new BusinessException("Não foi encontrado um candidato com Id informado!"))
+					.transformarParaCandidatoDTO();
+		}
+		throw new BusinessException("Id do candidato não pode ser nulo!");
+	}
+
 	public Iterable<Candidato> buscarTodos() {
 		return candidatoRepository.findAll();
 	}
 
 	public void deletar(Long id) {
-		concursoCandidatoRepository.deleteAll(concursoCandidatoRepository.findByConcursoCandidatoKeyIdCandidato(id));
-		candidatoRepository.deleteById(id);
+		if (Objects.nonNull(id)) {
+			Candidato candidato = candidatoRepository.findById(id)
+					.orElseThrow(() -> new BusinessException("Não foi encontrado um candidato com Id informado!"));
+
+			concursoCandidatoRepository
+					.deleteAll(concursoCandidatoRepository.findByConcursoCandidatoKeyIdCandidato(candidato.getId()));
+			candidatoRepository.delete(candidato);
+			return;
+		}
+		throw new BusinessException("Id do candidato não pode ser nulo!");
 	}
 
+	public void validarCandidato(CandidatoDTO dto) {
+		if (Objects.isNull(dto)) {
+			throw new BusinessException("O candidato não pode ser nulo!");
+		}
+		if (StringUtils.isEmpty(dto.getNome())) {
+			throw new BusinessException("O nome do candidato não pode ser nulo!");
+		}
+	}
 }
