@@ -1,5 +1,5 @@
 
-import { CandidatoService } from './../candidato.service';
+import { CandidatoService } from '../candidato/candidato.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Candidato } from './editar-candidato.model';

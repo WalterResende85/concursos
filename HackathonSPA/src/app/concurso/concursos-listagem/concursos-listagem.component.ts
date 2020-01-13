@@ -1,12 +1,12 @@
 
 import { Component, OnInit } from '@angular/core';
-import { ConcursoService } from './../concurso.service';
-import { Concurso } from '../editar-concurso/editar-concurso.model';
-import { ConcursoCandidatoService } from '../concurso-candidato.service';
+import { ConcursoService } from '../concurso.service';
+import { Concurso } from '../../editar-concurso/editar-concurso.model';
+import { ConcursoCandidatoService } from '../../ConcursoCandidato/concurso-candidato.service';
 import { Router } from '@angular/router';
-import { CandidatoService } from './../candidato.service';
-import { Candidato } from '../editar-candidato/editar-candidato.model';
-import { ConcursoCandidato } from '../concurso-candidato-listagem/concurso-candidato-listagem.model';
+import { CandidatoService } from '../../candidato/candidato.service';
+import { Candidato } from '../../editar-candidato/editar-candidato.model';
+import { ConcursoCandidato } from '../../ConcursoCandidato/concurso-candidato-listagem/concurso-candidato-listagem.model';
 import { FormsModule } from "@angular/forms";
 
 @Component({

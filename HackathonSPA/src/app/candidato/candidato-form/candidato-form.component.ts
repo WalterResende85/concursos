@@ -1,8 +1,8 @@
-import { CandidatoService } from './../candidato.service';
+import { CandidatoService } from '../candidato.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Candidato } from './../editar-candidato/editar-candidato.model';
+import { Candidato } from '../../editar-candidato/editar-candidato.model';
 @Component({
   selector: 'app-candidato-form',
   templateUrl: './candidato-form.component.html',

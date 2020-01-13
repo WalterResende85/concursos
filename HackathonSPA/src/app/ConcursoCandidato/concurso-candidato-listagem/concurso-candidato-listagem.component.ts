@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ConcursoCandidatoService } from '../concurso-candidato.service';
 import { ConcursoCandidato } from './concurso-candidato-listagem.model';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Concurso } from '../editar-concurso/editar-concurso.model';
+import { Concurso } from '../../editar-concurso/editar-concurso.model';
 
 
 @Component({

@@ -1,8 +1,8 @@
 
 import { Component, OnInit } from '@angular/core';
 
-import { CandidatoService } from './../candidato.service';
-import { Candidato } from '../editar-candidato/editar-candidato.model';
+import { CandidatoService } from '../candidato.service';
+import { Candidato } from '../../editar-candidato/editar-candidato.model';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-candidatos-listagem',

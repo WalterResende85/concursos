@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ConcursoService } from './../concurso.service';
+import { ConcursoService } from '../concurso.service';
 import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
-import { Concurso } from '../editar-concurso/editar-concurso.model';
+import { Concurso } from '../../editar-concurso/editar-concurso.model';
 
 @Component({
   selector: 'app-concurso-form',

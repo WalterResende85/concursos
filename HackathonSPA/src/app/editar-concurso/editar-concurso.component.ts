@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ConcursoService } from './../concurso.service';
+import { ConcursoService } from '../concurso/concurso.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Concurso } from './editar-concurso.model';
 
