@@ -23,8 +23,7 @@ export class CandidatoFormComponent implements OnInit {
       alert(`O candidato ${this.candidato.nome} foi salvo com sucesso`);
     },
       error => {
-        debugger
-        this.erroCampoNulo = error.error;
+       this.erroCampoNulo = error.error;
 
       }
 

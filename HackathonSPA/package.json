@@ -22,6 +22,7 @@
     "angular2-materialize": "^15.1.10",
     "jquery": "^2.2.4",
     "materialize-css": "^1.0.0",
+    "ngx-mask": "^8.1.7",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

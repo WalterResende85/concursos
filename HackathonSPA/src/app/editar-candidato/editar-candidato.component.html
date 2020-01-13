@@ -1,27 +1,28 @@
 <div class="container light-blue lighten-5">
-<h4 class="center">Editar Candidato</h4>
-<table class="table">
-    <tr>
-        <label for="nome">Nome</label>
-        <td> <input type="text" id="nome" name="nome" class="form-control" [(ngModel)]="candidato.nome" #nome="ngModel"
-                required>
-            <div *ngIf="!nome.valid && nome.touched">{{erroCampoNulo}}</div>
-        </td>
-    </tr>
-    <tr>
-        <label for="cpf">CPF</label>
-        <td><input type="number" id="cpf" name="cpf" min="11" max="11" class="form-control" [(ngModel)]="candidato.cpf"
-                required></td>
-    </tr>
-    <tr>
-        <label for="cidade">Cidade</label>
-        <td><input type="text" id="cidade" name=cidade class="form-control" [(ngModel)]="candidato.cidade" required>
-        </td>
-    </tr>
-
-    <tr>
-        <label></label>
-        <td><button class="btn waves-effect waves-light right" (click)="atualizar()" [disabled]="!nome.valid">Salvar</button></td>
-    </tr>
-</table>
+    <h4 class="center">Editar Candidato</h4>
+    <table class="table">
+        <tr>
+        <tr>
+            <td>Nome</td>
+            <td class="input-field"> <input type="text" id="nome" name="nome" class="form-control"
+                    [(ngModel)]="candidato.nome" #nome="ngModel" required>
+                <div *ngIf="!nome.valid || nome.touched">{{erroCampoNulo}}</div>
+            </td>
+        </tr>
+        <tr>
+            <td>CPF</td>
+            <td class="input-field"><input type="text" mask="000.000.000-99" id="cpf" name="cpf"
+                    class="validate form-control" [(ngModel)]="candidato.cpf" required></td>
+        </tr>
+        <tr>
+            <td>Cidade</td>
+            <td><input type="text" id="cidade" name=cidade class="form-control" [(ngModel)]="candidato.cidade" required>
+            </td>
+        </tr>
+        <tr>
+            <label></label>
+            <td colspan="2"><button class="btn waves-effect waves-light right" (click)="atualizar()"
+                    [disabled]="!nome.valid">Salvar</button></td>
+        </tr>
+    </table>
 </div>

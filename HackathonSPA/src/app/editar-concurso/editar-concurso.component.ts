@@ -28,14 +28,23 @@ export class EditarConcursoComponent implements OnInit {
     });
   }
   atualizar(concurso: Concurso) {
-    this.concursoService.atualizar(concurso.id, concurso).subscribe(() => {
-      this.router.navigate(['/concursos']);
-      alert(`O concurso ${this.concurso.nome} foi salvo com sucesso`);
-    },
-      error => {
-        this.erroCampoNulo = error.error;
-      }
-    );
+    if (this.concurso.nome == null || this.concurso.quantidadeVagas == null) {
+      alert("Não é possivel cadastrar um concurso com campo nulo");
+    }
+    if (this.concurso.quantidadeVagas < 1) {
+      alert("A quantidade de vagas deve ser maior que 0");
+    }
+    else {
+      this.concursoService.atualizar(concurso.id, concurso).subscribe(() => {
+        this.router.navigate(['/concursos']);
+        alert(`O concurso ${this.concurso.nome} foi salvo com sucesso`);
+      },
+        error => {
+          this.erroCampoNulo = error.error;
+        }
+      );
+    
+    }
 
   }
 }

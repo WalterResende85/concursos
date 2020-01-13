@@ -21,6 +21,8 @@ import { EditarCandidatoComponent } from './editar-candidato/editar-candidato.co
 import { EditarConcursoComponent } from './editar-concurso/editar-concurso.component';
 import { ConcursoCandidatoListagemComponent } from './concurso-candidato-listagem/concurso-candidato-listagem.component';
 import { LoginComponent } from './login/login.component';
+import { NgxMaskModule } from 'ngx-mask';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,11 +43,13 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     routing,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [
     CandidatoService,
-    ConcursoService
+    ConcursoService,
+    NgxMaskModule
   ],
   bootstrap: [AppComponent]
 })

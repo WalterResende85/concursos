@@ -55,7 +55,7 @@
             <div class="form-group">
                 <label for="candidato">Candidatos</label>
                 <select [(ngModel)]="concursoCandidato.idCandidato" name="cadidato">
-                    <option *ngFor="let candidato of candidatos" [ngValue]="candidato.id">{{ candidato.nome }}</option>
+                    <option *ngFor="let candidato of candidatos" [ngValue]="candidato.id" required>{{ candidato.nome }}</option>
                 </select>
             </div>
             <button class="btn waves-effect waves-light z-depth-5" (click)="InscreverCandidato(concurso.id)">
