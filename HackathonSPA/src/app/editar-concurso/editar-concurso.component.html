@@ -5,7 +5,7 @@
         <td>Nome</td>
         <td> <input type="text" id="nome" name="nome" class="form-control" [(ngModel)]="concurso.nome" #nome="ngModel"
                 required>
-            <div *ngIf="!nome.valid && nome.touched"></div>
+            <div *ngIf="!nome.valid && nome.touched">{{erroCampoNulo}}</div>
         </td>
     </tr>
     <tr>

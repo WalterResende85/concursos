@@ -12,7 +12,8 @@ import { FormGroup } from '@angular/forms';
 })
 export class EditarCandidatoComponent implements OnInit {
   id: number;
-  candidato: Candidato; 
+  candidato: Candidato;
+  erroCampoNulo:String
 
   constructor(private CandidatoService: CandidatoService, private route: ActivatedRoute, private router: Router) { }
 
@@ -20,17 +21,26 @@ export class EditarCandidatoComponent implements OnInit {
     this.candidato = new Candidato();
     this.id = this.route.snapshot.params['id'];
     this.buscar(this.id);
-   
+
   }
-  
+
   buscar(id: number) {
-       return this.CandidatoService.buscar(id).subscribe(resposta => {
-         this.candidato = resposta;        
+    return this.CandidatoService.buscar(id).subscribe(resposta => {
+      this.candidato = resposta;
     });
   }
 
-  atualizar(){
-     this.CandidatoService.atualizar(this.candidato).subscribe(()=>this.router.navigate(['/candidatos']));
-     ;
+  atualizar() {
+    this.CandidatoService.atualizar(this.candidato).subscribe(() =>{
+      this.router.navigate(['/candidatos']);
+      alert(`O candidato ${this.candidato.nome} foi salvo com sucesso`);
+    },
+        error => {
+        this.erroCampoNulo = error.error;
+      }
+    
+    
+    );
+  
   }
 }

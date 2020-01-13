@@ -9,16 +9,22 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./concurso-form.component.scss']
 })
 export class ConcursoFormComponent implements OnInit {
-  concurso:any;
+  concurso: any;
+  erroCampoNulo: String;
   constructor(private concursoService: ConcursoService, private router: Router) { }
 
   ngOnInit() {
-    this.concurso={};
+    this.concurso = {};
   }
-  salvar(){
-    this.concursoService.salvar(this.concurso).subscribe(()=>{
+  salvar() {
+    this.concursoService.salvar(this.concurso).subscribe(() => {
       this.router.navigate(['/concursos']);
-    });
-    
+      alert(`O concurso ${this.concurso.nome} foi salvo com sucesso`);
+    },
+      error => {
+        this.erroCampoNulo = error.error;
+      }
+    );
+
   }
 }
