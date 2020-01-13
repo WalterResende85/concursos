@@ -21,26 +21,26 @@ public class ConcursoCandidatoService {
 	CandidatoService candidatoService;
 	@Autowired
 	ConcursoService concursoService;
-	
 
 	public ConcursoCandidatoDTO salvar(ConcursoCandidatoDTO dto) {
 		validarConcursoCandidato(dto);
-		
+
 		ConcursoCandidato concursoCandidato = concursoCandidatoRepository.save(dto.tansformarParaEntidade());
 		return concursoCandidato.tranformarParaDTO();
 	}
 
 	public ConcursoCandidatoDTO salvar(Long idCandidato, Long idConcurso, ConcursoCandidatoDTO dto) {
 		ConcursoCandidatoDTO ConcursoCandidatoExistente = buscar(new ConcursoCandidatoKey(idCandidato, idConcurso));
-		
+
 		BeanUtils.copyProperties(dto.tansformarParaEntidade(), ConcursoCandidatoExistente);
 		ConcursoCandidatoExistente.setIdCandidato(idCandidato);
 		ConcursoCandidatoExistente.setIdConcurso(idConcurso);
-		
+
 		return salvar(ConcursoCandidatoExistente);
 	}
+
 	public ConcursoCandidatoDTO buscar(ConcursoCandidatoKey concursoCandidatoKey) {
-		if(Objects.nonNull(concursoCandidatoKey)) {
+		if (Objects.nonNull(concursoCandidatoKey)) {
 			return concursoCandidatoRepository.findById(concursoCandidatoKey).get().tranformarParaDTO();
 		}
 		throw new BusinessException("ConcursoCandidato não pode ser nulo");
@@ -52,14 +52,14 @@ public class ConcursoCandidatoService {
 	}
 
 	public Iterable<ConcursoCandidatoDTO> buscarCandidatosPorconcurso(Long idConcurso) {
-		if(Objects.nonNull(idConcurso)) {
+		if (Objects.nonNull(idConcurso)) {
 			return concursoCandidatoRepository.buscarCandidatosPorConcurso(idConcurso);
 		}
 		throw new BusinessException("id do Concurso não pode ser nulo");
 	}
 
 	public void deletar(ConcursoCandidatoKey concursoCandidatoKey) {
-		
+
 		concursoCandidatoRepository.deleteById(concursoCandidatoKey);
 	}
 

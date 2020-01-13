@@ -17,7 +17,9 @@ export class CandidatoFormComponent implements OnInit {
   salvar(){
     this.candidatoService.salvar(this.candidato).subscribe(()=>{
       this.router.navigate(['/candidatos']);
-    });
+    }
+    
+    );
    
   }
 
