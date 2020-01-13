@@ -33,7 +33,10 @@ export class ConcursoCandidatoListagemComponent implements OnInit {
   }
   atualizarNota(nota: number) {
     this.concursoCandidato.nota = nota;
-    this.concursoCandidatoService.atualizar(this.concursoCandidato.idCandidato, this.concursoCandidato.idConcurso, this.concursoCandidato).subscribe();
+    this.concursoCandidatoService.atualizar(this.concursoCandidato.idCandidato,
+       this.concursoCandidato.idConcurso, this.concursoCandidato).subscribe(()=>{
+         this.router.navigate([`/concursoCandidato/${this.concursoCandidato.idConcurso}`]);
+       });
   }
 
 }

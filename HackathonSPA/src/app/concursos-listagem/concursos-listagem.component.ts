@@ -47,6 +47,8 @@ export class ConcursosListagemComponent implements OnInit {
     this.concursoService.remover(this.concurso.id).subscribe(() => {
       this.toggleModalExcluir(null);
       this.listar();
+      this.router.navigate(['concurso']);
+
     });
   }
   toggleModalExcluir(concurso: Concurso) {

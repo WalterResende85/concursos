@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class CandidatoFormComponent implements OnInit {
   candidato: any;
+  erroCampoNulo: any;
+  CandidatoCadastrado: String;
   constructor(private candidatoService: CandidatoService, private router: Router) { }
 
   ngOnInit() {
@@ -17,7 +19,13 @@ export class CandidatoFormComponent implements OnInit {
   salvar(){
     this.candidatoService.salvar(this.candidato).subscribe(()=>{
       this.router.navigate(['/candidatos']);
-    });
+    },
+    error=>{
+      debugger
+      this.erroCampoNulo = error;
+    }
+    
+    );
    
   }
 
