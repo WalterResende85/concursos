@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditarCandidatoComponent } from './editar-candidato/editar-candidato.component';
 import { EditarConcursoComponent } from './editar-concurso/editar-concurso.component';
 import { ConcursoCandidatoListagemComponent } from './concurso-candidato-listagem/concurso-candidato-listagem.component';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { ConcursoCandidatoListagemComponent } from './concurso-candidato-listage
     HeaderComponent,
     EditarCandidatoComponent,
     EditarConcursoComponent,
-    ConcursoCandidatoListagemComponent
+    ConcursoCandidatoListagemComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
