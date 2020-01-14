@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  concursoUrl: 'http://localhost:8080/concursos',
-  candidatosUrl: 'http://localhost:8080/candidatos'
+  baseUrl: 'http://localhost:8080/'
+
 };
 
 /*

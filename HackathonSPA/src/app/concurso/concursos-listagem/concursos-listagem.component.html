@@ -29,7 +29,6 @@
                         <button class="btn blue darken-1 z-depth-5" (click)=" listarCandidatosPorConcurso(concurso.id)">
                             Detalhes
                         </button>
-
                     </td>
                     <td>
                         <a routerLink="/editarConcurso/{{concurso.id}}">
@@ -41,14 +40,12 @@
                             (click)="toggleModalExcluir(concurso)">
                             Remover
                         </button>
-
                     </td>
-
                 </tr>
-
             </table>
         </div>
     </div>
+
     <div id="modalIncreverCandidato" class="modal" *ngIf="exibirModalIncreverCandidato">
         <div class="modalIncreverCandidato-content">
             <h5>Cadatrar Candidato no concurso {{concurso.nome}}</h5>

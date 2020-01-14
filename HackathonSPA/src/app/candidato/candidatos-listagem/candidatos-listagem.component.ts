@@ -2,8 +2,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CandidatoService } from '../candidato.service';
-import { Candidato } from '../../editar-candidato/editar-candidato.model';
+import { Candidato } from '../editar-candidato.model';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-candidatos-listagem',
   templateUrl: './candidatos-listagem.component.html',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class CandidatosListagemComponent implements OnInit {
 
-  candidatos: Array<any>;
+  candidatos: Observable<Candidato[]>;
   exibirModal: boolean = false;
   candidato: Candidato;
 
@@ -22,25 +23,25 @@ export class CandidatosListagemComponent implements OnInit {
 
   }
 
-  listar() {
+  public listar() {
     this.candidatoService.listar().subscribe(dados => {
       this.candidatos = dados;
     });
   }
 
-  atualizar(candidato: Candidato) {
+  public atualizar(candidato: Candidato) {
     this.candidatoService.atualizar(candidato).subscribe();
 
   }
 
-  remover() {
+  public remover() {
     this.candidatoService.remover(this.candidato.id).subscribe(() => {
       this.toggleModalExcluir(null);
       this.listar();
     });
   }
 
-  toggleModalExcluir(candidato: Candidato) {
+  public toggleModalExcluir(candidato: Candidato) {
     this.candidato = candidato;
     this.exibirModal = !this.exibirModal;
   }

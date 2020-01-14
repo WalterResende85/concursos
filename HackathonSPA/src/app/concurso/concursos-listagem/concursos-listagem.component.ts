@@ -5,9 +5,10 @@ import { Concurso } from '../../editar-concurso/editar-concurso.model';
 import { ConcursoCandidatoService } from '../../ConcursoCandidato/concurso-candidato.service';
 import { Router } from '@angular/router';
 import { CandidatoService } from '../../candidato/candidato.service';
-import { Candidato } from '../../editar-candidato/editar-candidato.model';
+import { Candidato } from '../../candidato/editar-candidato.model';
 import { ConcursoCandidato } from '../../ConcursoCandidato/concurso-candidato-listagem/concurso-candidato-listagem.model';
 import { FormsModule } from "@angular/forms";
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-concursos-listagem',
@@ -15,12 +16,12 @@ import { FormsModule } from "@angular/forms";
   styleUrls: ['./concursos-listagem.component.scss']
 })
 export class ConcursosListagemComponent implements OnInit {
-  concursos: Array<any>;
+  concursos: Observable<Concurso[]>;
   exibirModal: boolean = false;
   exibirModalIncreverCandidato: boolean = false;
   concurso: Concurso;
   concursoCandidato: ConcursoCandidato = new ConcursoCandidato();
-  candidatos: Array<any>;
+  candidatos: Observable<Candidato[]>;
   candidato: Candidato;
   constructor(private concursoService: ConcursoService,
     private concursoCandidatoService: ConcursoCandidatoService,
@@ -29,7 +30,7 @@ export class ConcursosListagemComponent implements OnInit {
 
   ngOnInit() {
     this.listar();
-    
+
   }
   listarCandidatosPorConcurso(id: number) {
     this.router.navigate(['concursoCandidato', id])
@@ -45,15 +46,13 @@ export class ConcursosListagemComponent implements OnInit {
   }
   remover() {
     this.concursoService.remover(this.concurso.id).subscribe(() => {
-      this.toggleModalExcluir(null);
-      this.listar();
-      this.router.navigate(['concurso']);
-
-    });
+        this.toggleModalExcluir(null);
+      });
   }
   toggleModalExcluir(concurso: Concurso) {
     this.concurso = concurso;
     this.exibirModal = !this.exibirModal;
+
   }
   toggleModalIncreverCandidato(concurso: Concurso) {
     this.listarCandidatos();
@@ -67,7 +66,7 @@ export class ConcursosListagemComponent implements OnInit {
   }
   InscreverCandidato(idConcurso: number) {
     this.concursoCandidato.idConcurso = idConcurso;
-    this.concursoCandidatoService.salvar(this.concursoCandidato).subscribe(()=>{
+    this.concursoCandidatoService.salvar(this.concursoCandidato).subscribe(() => {
       this.router.navigate(['concursoCandidato', idConcurso])
     });
   }

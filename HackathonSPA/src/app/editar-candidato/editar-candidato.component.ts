@@ -2,7 +2,7 @@
 import { CandidatoService } from '../candidato/candidato.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Candidato } from './editar-candidato.model';
+import { Candidato } from '../candidato/editar-candidato.model';
 import { FormGroup } from '@angular/forms';
 
 @Component({

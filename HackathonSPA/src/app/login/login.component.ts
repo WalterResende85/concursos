@@ -10,15 +10,22 @@ export class LoginComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    
+
   }
-  login() {
+  public logar() {
+
+  }
+  public cadastrar() {
+
+  }
+
+  public login() {
     this.classBody = "sign-in-js";
   }
-  cadastrar() {
+  public formCadastro() {
     this.classBody = "sign-up-js";
   }
- 
+
 }
 
 

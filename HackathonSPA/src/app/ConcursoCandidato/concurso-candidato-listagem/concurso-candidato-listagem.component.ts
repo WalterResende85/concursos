@@ -22,21 +22,27 @@ export class ConcursoCandidatoListagemComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.listarCandidatosPorConcurso(this.id);
   }
-  listarCandidatosPorConcurso(id: number) {
+  public listarCandidatosPorConcurso(id: number) {
     this.concursoCandidatoService.listarCandidatosPorConcurso(id).subscribe(dados => {
       this.concursoCandidatos = dados;
     })
   }
-  exibirModalNota(concursoCandidato: ConcursoCandidato) {
+  public exibirModalNota(concursoCandidato: ConcursoCandidato) {
     this.concursoCandidato = concursoCandidato;
     this.exibirModal = !this.exibirModal;
   }
-  atualizarNota(nota: number) {
-    this.concursoCandidato.nota = nota;
-    this.concursoCandidatoService.atualizar(this.concursoCandidato.idCandidato,
-       this.concursoCandidato.idConcurso, this.concursoCandidato).subscribe(()=>{
-         this.router.navigate([`/concursoCandidato/${this.concursoCandidato.idConcurso}`]);
-       });
+  public atualizarNota(nota: number) {
+    if (nota > 0 && nota <= 100) {
+      this.concursoCandidato.nota = nota;
+      this.concursoCandidatoService.atualizar(this.concursoCandidato.idCandidato,
+        this.concursoCandidato.idConcurso, this.concursoCandidato).subscribe(() => {
+          this.exibirModal = !this.exibirModal;
+         
+        });
+    }else{
+      alert("nota deve ter valor entre 0 e 100");
+    }
+
   }
 
 }

@@ -2,7 +2,7 @@ import { CandidatoService } from '../candidato.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Candidato } from '../../editar-candidato/editar-candidato.model';
+import { Candidato } from '../editar-candidato.model';
 @Component({
   selector: 'app-candidato-form',
   templateUrl: './candidato-form.component.html',
@@ -17,7 +17,7 @@ export class CandidatoFormComponent implements OnInit {
   ngOnInit() {
     this.candidato = {};
   }
-  salvar() {
+  public salvar() {
     this.candidatoService.salvar(this.candidato).subscribe(data => {
       this.router.navigate(['/candidatos']);
       alert(`O candidato ${this.candidato.nome} foi salvo com sucesso`);

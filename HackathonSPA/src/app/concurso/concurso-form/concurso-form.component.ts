@@ -17,7 +17,7 @@ export class ConcursoFormComponent implements OnInit {
   ngOnInit() {
 
   }
-  salvar() {
+  public salvar() {
     if (this.concurso.nome == null || this.concurso.quantidadeVagas == null) {
       alert("Não é possivel cadastrar um concurso com campo nulo");
     }

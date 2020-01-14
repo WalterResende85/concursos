@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ConcursoCandidato } from './concurso-candidato-listagem/concurso-candidato-listagem.model';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConcursoCandidatoService {
-  concursoCandidatoUrl = 'http://localhost:8080/concursoCandidato'
+  private concursoCandidatoUrl = `${environment.baseUrl}concursoCandidato`; 
   constructor(private http: HttpClient) { }
 
   public salvar(concursoCandidato: any) {

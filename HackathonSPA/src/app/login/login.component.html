@@ -24,16 +24,16 @@
                         <input id="senha" name="senha" type="password" class="validate">
                         <label for="senha">Senha</label>
                     </div>
-                    <button class="btn blue darken-4 z-depth-5">Cadastrar</button>
+                    <button class="btn blue darken-4 z-depth-5"(click)="cadastrar()">Cadastrar</button>
                 </form>
-            </div><!-- second column -->
-        </div><!-- first content -->
+            </div>
+        </div>
         <div class="content second-content z-depth-5">
             <div class="first-column">
-                <h2 class="title title-primary">Ola!</h2>
+                <h2 class="title title-primary">Olá!</h2>
                 <p class="description description-primary">Entre com os dados pessoais</p>
                 <p class="description description-primary">e desfrute de nossos serviços</p>
-                <button id="signup" class="btn blue darken-4 z-depth-5" (click)="cadastrar()">Cadastrar</button>
+                <button id="signup" class="btn blue darken-4 z-depth-5" (click)="formCadastro()">Cadastrar</button>
             </div>
             <div class="second-column">
                 <h2 class="title title-second">Conecte-se com a gente!</h2>
@@ -47,10 +47,10 @@
                         <label for="senhaLogin">Senha</label>
                     </div>
                     <a class="password" href="#">Esqueceu a senha?</a>
-                    <button class="btn blue darken-4 z-depth-5">logar</button>
+                    <button class="btn blue darken-4 z-depth-5"(click)="logar()">logar</button>
                 </form>
-            </div><!-- second column -->
-        </div><!-- second-content -->
+            </div>
+        </div>
     </div>
 
 </body>

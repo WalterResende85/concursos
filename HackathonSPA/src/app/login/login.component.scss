@@ -12,7 +12,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 90vh;
   
 }
 .content {
@@ -36,8 +36,7 @@ body {
 }
 .title {
     font-size: 28px;
-    font-weight: bold;
-    text-transform: capitalize;
+    font-weight: bold;    
 }
 .title-primary {
     color: #fff;
@@ -91,7 +90,7 @@ body {
     width: 55%;
 }
 
-/* second content*/
+
 
 .second-content {
     position: absolute;
@@ -130,13 +129,13 @@ body {
     border-bottom-left-radius: 0;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    animation: slidein 1.3s; /*MODIFIQUEI DE 3s PARA 1.3s*/
+    animation: slidein 1.3s; 
 
     z-index: 12;
 }
 
 .sign-up-js .content::before {
-    animation: slideout 1.3s; /*MODIFIQUEI DE 3s PARA 1.3s*/
+    animation: slideout 1.3s; 
 
     z-index: 12;
 }
@@ -160,13 +159,13 @@ body {
 
     z-index: -1;
     position: relative;
-    animation: deslocamentoEsq 1.3s; /*MODIFIQUEI DE 3s PARA 1.3s*/
+    animation: deslocamentoEsq 1.3s; 
 }
 
 .sign-up-js .second-content .second-column {
     position: relative;
     z-index: -1;
-    animation: deslocamentoDir 1.3s; /*MODIFIQUEI DE 3s PARA 1.3s*/
+    animation: deslocamentoDir 1.3s; 
 }
 
 /*ANIMAÇÃOO CSS PARA O CONTEÚDO*/
@@ -180,7 +179,7 @@ body {
     }
 
   
-    50% {
+    90% {
         left: -100px;
         opacity: .2;
       
@@ -201,8 +200,7 @@ body {
         z-index: 12;
     }
 
-   
-    50% {
+    90% {
         left: 100px;
       
     }

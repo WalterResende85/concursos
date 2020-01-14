@@ -8,25 +8,24 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ConcursoService {
-
+  private concursoURL = `${environment.baseUrl}concursos`;
   constructor(private http: HttpClient) { }
 
-  salvar(concurso: any) {
-    return this.http.post(environment.concursoUrl, concurso);
+ public salvar(concurso: any) {
+    return this.http.post(this.concursoURL, concurso);
   }
 
-  listar() {
-    return this.http.get<any[]>(`${environment.concursoUrl}`);
+  public listar():Observable<any> {
+    return this.http.get(`${this.concursoURL}`);
   }
-  remover(idConcurso: number) {
-    return this.http.delete(`${environment.concursoUrl}/${idConcurso}`);
+  public remover(idConcurso: number) {
+    return this.http.delete(`${this.concursoURL}/${idConcurso}`);
   }
-  buscar(idConcurso: number): Observable<Concurso> {
-    return this.http.get<Concurso>(`${environment.concursoUrl}/${idConcurso}`);
+  public buscar(idConcurso: number): Observable<any> {
+    return this.http.get(`${this.concursoURL}/${idConcurso}`,{observe: "response"});
   }
 
-  atualizar(id: number, concurso: any): Observable<Concurso> {
-    debugger
-    return this.http.put<Concurso>(`${environment.concursoUrl}/${id}`, concurso);
+  public atualizar(id: number, concurso: any): Observable<any> {
+     return this.http.put(`${this.concursoURL}/${id}`, concurso, {observe: "response"}) ;
   }
 }
