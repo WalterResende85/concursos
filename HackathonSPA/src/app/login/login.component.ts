@@ -6,15 +6,19 @@ import { Component, OnInit, ɵɵresolveBody } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-classBody:any;
+  classBody: any;
   constructor() { }
 
   ngOnInit() {
+    
   }
-login(){
-  this.classBody = "sign-in-js";
+  login() {
+    this.classBody = "sign-in-js";
+  }
+  cadastrar() {
+    this.classBody = "sign-up-js";
+  }
+ 
 }
-cadastrar(){
-  this.classBody = "sign-up-js";
-}
-}
+
+
