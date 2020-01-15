@@ -33,6 +33,14 @@ public class CandidatoController {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 	}
+	@PostMapping("/logar")
+	public ResponseEntity<Object> logar(@RequestBody CandidatoDTO dto) {
+		try {
+			return ResponseEntity.ok(candidatoService.logar(dto));
+		} catch (BusinessException e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+	}
 
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> atualizar(@PathVariable Long id, @RequestBody CandidatoDTO dto) {
@@ -51,6 +59,7 @@ public class CandidatoController {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 	}
+	
 
 	@GetMapping
 	public ResponseEntity<Iterable<Candidato>> buscarTodos() {

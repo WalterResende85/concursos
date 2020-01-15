@@ -7,21 +7,24 @@ public class CandidatoDTO {
 	private String nome;
 	private String cpf;
 	private String cidade;
-
+	private String senha;
+	
 	public CandidatoDTO() {
 	}
 
-	public CandidatoDTO(Long id, String nome, String cpf, String cidade) {
+	
+
+	public CandidatoDTO(Long id, String nome, String cpf, String cidade, String senha) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.cidade = cidade;
+		this.senha = senha;
 	}
 
 	public Candidato tansformarParaEntidade() {
-
-		return new Candidato(id, nome, cpf, cidade);
+		return new Candidato(id, nome, cpf, cidade, senha);
 	}
 
 	public String getNome() {
@@ -55,5 +58,14 @@ public class CandidatoDTO {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	
 
 }

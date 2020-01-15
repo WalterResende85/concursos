@@ -3,5 +3,6 @@ export class Candidato {
     nome: String;
     cpf: String;
     cidade: String;
+    senha: String;
  
 }

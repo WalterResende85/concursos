@@ -22,6 +22,7 @@ import { EditarConcursoComponent } from './editar-concurso/editar-concurso.compo
 import { ConcursoCandidatoListagemComponent } from './concurso-candidato/concurso-candidato-listagem/concurso-candidato-listagem.component';
 import { LoginComponent } from './login/login.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { AuthService } from './login/auth.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { NgxMaskModule } from 'ngx-mask';
   ],
   providers: [
     CandidatoService,
-    ConcursoService,
+    ConcursoService,    
+    AuthService,
     NgxMaskModule
   ],
   bootstrap: [AppComponent]

@@ -24,10 +24,23 @@ public class Candidato implements Serializable {
 	private String cpf;
 	@Column(name = "CIDADE")
 	private String cidade;
+	@Column(name = "SENHA")
+	private String senha;
 
 	public Candidato() {
 
 	}
+	
+	public Candidato(Long id, String nome, String cpf, String cidade, String senha) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.cidade = cidade;
+		this.senha = senha;
+	}
+
+
 
 	public Candidato(String nome, String cpf, String cidade) {
 		super();
@@ -35,17 +48,10 @@ public class Candidato implements Serializable {
 		this.cpf = cpf;
 		this.cidade = cidade;
 	}
-
-	public Candidato(Long id, String nome, String cpf, String cidade) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.cpf = cpf;
-		this.cidade = cidade;
-	}
-
+	
+	
 	public CandidatoDTO transformarParaCandidatoDTO() {
-		return new CandidatoDTO(id, nome, cpf, cidade);
+		return new CandidatoDTO(id, nome, cpf, cidade, senha);
 	}
 
 	public String getNome() {
@@ -79,5 +85,14 @@ public class Candidato implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	
 
 }

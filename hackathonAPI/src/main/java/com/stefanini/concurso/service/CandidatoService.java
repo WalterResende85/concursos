@@ -45,6 +45,22 @@ public class CandidatoService {
 		throw new BusinessException("Id do candidato não pode ser nulo!");
 	}
 
+	public CandidatoDTO logar(CandidatoDTO dto) {
+
+		if (Objects.nonNull(dto)) {
+			CandidatoDTO candidatoDTO = candidatoRepository.findByCpf(dto.getCpf())
+					.orElseThrow(() -> new BusinessException("Não foi encontrado um candidato com cpf informado!"))
+					.transformarParaCandidatoDTO();
+
+			if (candidatoDTO.getSenha().equals(dto.getSenha())) {
+				return candidatoDTO;
+			} else {
+				throw new BusinessException("Senha incorreta");
+			}
+		}
+		throw new BusinessException("O cpf do candidato não pode ser nulo!");
+	}
+
 	public Iterable<Candidato> buscarTodos() {
 		return candidatoRepository.findAll();
 	}
@@ -63,11 +79,14 @@ public class CandidatoService {
 	}
 
 	public void validarCandidato(CandidatoDTO dto) {
+		candidatoRepository.findByCpf(dto.getCpf());
+
 		if (Objects.isNull(dto)) {
 			throw new BusinessException("O candidato não pode ser nulo!");
 		}
 		if (StringUtils.isEmpty(dto.getNome())) {
 			throw new BusinessException("O nome do candidato não pode ser nulo!");
 		}
+
 	}
 }
