@@ -64,8 +64,18 @@ body {
     border: 1px solid #fff;
     margin-top: 1rem;
 }
+#signin:hover {
+    background-color: #fff !important;
+    color: #0d47a1;
+}
+#signup:hover {
+    background-color: #fff !important;
+    color: #0d47a1;
+}
+
 .btn:hover {
      border: none;
+     
  }
 .first-content {
     display: flex;
@@ -104,15 +114,7 @@ body {
     order: 1;
     z-index: -1;
 }
-.password {
-    color: #34495e;
-    font-size: 14px;
-    margin: 15px 0;
-    text-align: center;
-}
-.password::first-letter {
-    text-transform: capitalize;
-}
+
 .sign-in-js .first-content .first-column {
     z-index: -1;
 }
