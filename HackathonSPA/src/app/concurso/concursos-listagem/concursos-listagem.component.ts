@@ -32,39 +32,39 @@ export class ConcursosListagemComponent implements OnInit {
     this.listar();
 
   }
-  listarCandidatosPorConcurso(id: number) {
+  public listarCandidatosPorConcurso(id: number) {
     this.router.navigate(['concursoCandidato', id])
   }
-  listar() {
+  public listar() {
     this.concursoService.listar().subscribe(dados => {
       this.concursos = dados;
     });
   }
-  atualizar(id: number, concurso: Concurso) {
+  public atualizar(id: number, concurso: Concurso) {
     this.concursoService.atualizar(id, concurso).subscribe();
 
   }
-  remover() {
+  public remover() {
     this.concursoService.remover(this.concurso.id).subscribe(() => {
         this.toggleModalExcluir(null);
       });
   }
-  toggleModalExcluir(concurso: Concurso) {
+  public toggleModalExcluir(concurso: Concurso) {
     this.concurso = concurso;
     this.exibirModal = !this.exibirModal;
 
   }
-  toggleModalIncreverCandidato(concurso: Concurso) {
+  public toggleModalIncreverCandidato(concurso: Concurso) {
     this.listarCandidatos();
     this.concurso = concurso;
     this.exibirModalIncreverCandidato = !this.exibirModalIncreverCandidato;
   }
-  listarCandidatos() {
+  public listarCandidatos() {
     this.candidatoService.listar().subscribe(dados => {
       this.candidatos = dados;
     });
   }
-  InscreverCandidato(idConcurso: number) {
+  public InscreverCandidato(idConcurso: number) {
     this.concursoCandidato.idConcurso = idConcurso;
     this.concursoCandidatoService.salvar(this.concursoCandidato).subscribe(() => {
       this.router.navigate(['concursoCandidato', idConcurso])

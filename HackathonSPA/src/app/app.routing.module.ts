@@ -10,16 +10,19 @@ import { LoginComponent } from './login/login.component';
 
 
 const AppRoutes: Routes = [
-    { path: '', 
+    { path: 'home', 
         component: HomeComponent,
         canActivate: [AuthGuard]
     },
+
+    { path:'candidatos' , loadChildren:'./candidato/candidato.module#CandidatoModule'},
+    { path:'concursos' , loadChildren:'./concurso/concurso.module#ConcursoModule'},
 
     { path: 'editarCandidato/:id',
          component: EditarCandidatoComponent,
          canActivate: [AuthGuard]    
     },
-
+    
     { path: 'editarConcurso/:id',
         component: EditarConcursoComponent,
         canActivate: [AuthGuard]

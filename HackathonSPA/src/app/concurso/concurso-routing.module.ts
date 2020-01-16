@@ -1,20 +1,29 @@
-import { Routes, RouterModule } from '@angular/router';
-import { ModuleWithProviders } from '@angular/core';
-
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../guards/auth.guard';
 import { ConcursoFormComponent } from './concurso-form/concurso-form.component';
 import { ConcursosListagemComponent } from './concursos-listagem/concursos-listagem.component';
-import { AuthGuard } from '../guards/auth.guard';
+
 
 const ConcursoRoutes: Routes = [
-    { path: 'concursos',
-         component: ConcursosListagemComponent,
-         canActivate: [AuthGuard]
-    },
+     {
+          path: '',
+          component: ConcursosListagemComponent,
+          canActivate: [AuthGuard]
+     },
 
-    { path: 'cadastrarConcurso',
-         component: ConcursoFormComponent,
-         canActivate: [AuthGuard]
-    },
-   
+     {
+          path: 'cadastrar',
+          component: ConcursoFormComponent,
+          canActivate: [AuthGuard]
+     },
+
 ];
-export const ConcursoRoutingModule: ModuleWithProviders = RouterModule.forRoot(ConcursoRoutes);
+@NgModule({
+     imports: [
+          RouterModule.forChild(ConcursoRoutes),
+
+     ],
+     exports: [RouterModule]
+})
+export class ConcursoRoutingModule { }

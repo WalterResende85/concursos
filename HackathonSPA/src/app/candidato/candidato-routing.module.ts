@@ -1,23 +1,30 @@
-import { Routes, RouterModule } from '@angular/router';
-import { ModuleWithProviders } from '@angular/core';
-
-
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../guards/auth.guard';
 import { CandidatoFormComponent } from './candidato-form/candidato-form.component';
 import { CandidatosListagemComponent } from './candidatos-listagem/candidatos-listagem.component';
-import { AuthGuard } from '../guards/auth.guard';
+
+
 
 const candidatoRoutes: Routes = [
     {
-        path: 'candidatos',
+        path: '',
         component: CandidatosListagemComponent,
         canActivate: [AuthGuard]
     },
 
     {
-        path: 'cadastrarCandidato',
+        path: 'cadastrar',
         component: CandidatoFormComponent,
         canActivate: [AuthGuard]
     }
 
 ];
-export const CandidatoRoutingModule: ModuleWithProviders = RouterModule.forRoot(candidatoRoutes);
+    @NgModule({
+    imports:[
+        RouterModule.forChild(candidatoRoutes),
+       
+    ],
+    exports:[RouterModule]
+})
+export class CandidatoRoutingModule{}
