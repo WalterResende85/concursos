@@ -11,16 +11,49 @@ import { EditarCandidatoComponent } from "./editar-candidato/editar-candidato.co
 import { EditarConcursoComponent } from './editar-concurso/editar-concurso.component';
 import{ ConcursoCandidatoListagemComponent} from './concurso-candidato/concurso-candidato-listagem/concurso-candidato-listagem.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const APP_ROUTES: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'candidatos', component: CandidatosListagemComponent },
-    { path: 'cadastrarCandidato', component: CandidatoFormComponent },
-    { path: 'editarCandidato/:id', component: EditarCandidatoComponent },
-    { path: 'concursos', component: ConcursosListagemComponent },
-    { path: 'cadastrarConcurso', component: ConcursoFormComponent },
-    { path: 'editarConcurso/:id', component: EditarConcursoComponent },
-    { path: 'concursoCandidato/:id', component: ConcursoCandidatoListagemComponent },
+    { path: '', 
+        component: HomeComponent,
+        canActivate: [AuthGuard]
+    },
+
+    { path: 'candidatos',
+         component: CandidatosListagemComponent,
+         canActivate: [AuthGuard]
+    },
+
+    { path: 'cadastrarCandidato',
+         component: CandidatoFormComponent,
+         canActivate: [AuthGuard]    
+    },
+
+    { path: 'editarCandidato/:id',
+         component: EditarCandidatoComponent,
+         canActivate: [AuthGuard]    
+    },
+
+    { path: 'concursos',
+         component: ConcursosListagemComponent,
+         canActivate: [AuthGuard]
+    },
+
+    { path: 'cadastrarConcurso',
+         component: ConcursoFormComponent,
+         canActivate: [AuthGuard]
+    },
+
+    { path: 'editarConcurso/:id',
+        component: EditarConcursoComponent,
+        canActivate: [AuthGuard]
+    },
+
+    { path: 'concursoCandidato/:id',
+        component: ConcursoCandidatoListagemComponent,
+        canActivate: [AuthGuard]
+    },
+
     { path: 'login', component: LoginComponent }
 ];
 export const routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);

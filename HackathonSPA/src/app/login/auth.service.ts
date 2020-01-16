@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   candidato: Candidato;
-  mostrarNavBarEmmiter = new EventEmitter<boolean>();
-
+  mostrarmenuEmmiter = new EventEmitter<boolean>();
+  candidatoAutenticado: boolean = false;
   constructor(private candidatoService: CandidatoService, private router: Router) { }
 
   public logar(candidato: Candidato) {
@@ -17,16 +17,25 @@ export class AuthService {
       alert("os campos não podem ser nulos");
     } else {
       this.candidatoService.logar(candidato).subscribe(data => {
-        this.mostrarNavBarEmmiter.emit(true);
+        this.candidatoAutenticado = true;
+
+        this.mostrarmenuEmmiter.emit(true);
+        
         this.router.navigate(['']);
       },
         error => {
-          this.mostrarNavBarEmmiter.emit(false);
+          this.candidatoAutenticado = false;
+
+          this.mostrarmenuEmmiter.emit(false);
+
           this.router.navigate(['/login']);
           alert(`${error.error}`);
         }
       );
     }
+  }
+  public candidatoEstaAutenticado(){
+    return this.candidatoAutenticado;
   }
 
 }
