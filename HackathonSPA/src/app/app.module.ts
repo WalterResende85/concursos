@@ -17,7 +17,9 @@ import { AuthService } from './login/auth.service';
 import { LoginComponent } from './login/login.component';
 import { ConcursoCandidatoRoutingModule } from './concurso-candidato/concuros-candidato-routing.module';
 import { CandidatoService } from './candidato/candidato.service';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToasterModule, ToasterService } from 'angular2-toaster';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,23 +29,27 @@ import { CandidatoService } from './candidato/candidato.service';
     EditarCandidatoComponent,
     EditarConcursoComponent,
     ConcursoCandidatoListagemComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    ToasterModule.forRoot(),
     ConcursoCandidatoRoutingModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModule,
     NgxMaskModule.forRoot()
   ],
   providers: [
     CandidatoService,
-    ConcursoService,    
+    ConcursoService,
     AuthService,
     AuthGuard,
-    NgxMaskModule
+    NgxMaskModule,
+    ToasterService
   ],
   bootstrap: [AppComponent]
 })

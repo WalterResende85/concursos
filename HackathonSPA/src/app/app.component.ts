@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,8 +10,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'concurso';
 
-  constructor() { }
+  constructor(private router: Router) { }
   ngOnInit() {
-    
+    this.router.navigate(['/login']);
   }
 }

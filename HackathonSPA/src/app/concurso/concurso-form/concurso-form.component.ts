@@ -3,6 +3,7 @@ import { ConcursoService } from '../concurso.service';
 import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { Concurso } from '../../editar-concurso/editar-concurso.model';
+import { ToasterService } from 'angular2-toaster';
 
 @Component({
   selector: 'app-concurso-form',
@@ -12,25 +13,28 @@ import { Concurso } from '../../editar-concurso/editar-concurso.model';
 export class ConcursoFormComponent implements OnInit {
   concurso: Concurso = new Concurso();
   erroCampoNulo: String;
-  constructor(private concursoService: ConcursoService, private router: Router) { }
+  constructor(private concursoService: ConcursoService,
+    private router: Router,
+    private toasterService: ToasterService
+  ) { }
 
   ngOnInit() {
 
   }
   public salvar() {
     if (this.concurso.nome == null || this.concurso.quantidadeVagas == null) {
-      alert("Não é possivel cadastrar um concurso com campo nulo");
+      this.toasterService.pop('error', 'Não é possivel cadastrar um concurso com campo nulo');
     }
     if (this.concurso.quantidadeVagas < 1) {
-      alert("A quantidade de vagas deve ser maior que 0");
+      this.toasterService.pop('error', 'A quantidade de vagas deve ser maior que 0');
     }
     else {
       this.concursoService.salvar(this.concurso).subscribe(() => {
         this.router.navigate(['/concursos']);
-        alert(`O concurso ${this.concurso.nome} foi salvo com sucesso`);
+        this.toasterService.pop('success', `O concurso ${this.concurso.nome} foi salvo com sucesso`)
       },
         error => {
-          this.erroCampoNulo = error.error;
+          this.toasterService.pop('error', `${error.error}`);  
         }
       );
 

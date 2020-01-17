@@ -1,5 +1,6 @@
 package com.stefanini.concurso.service;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.BeanUtils;
@@ -79,7 +80,9 @@ public class CandidatoService {
 	}
 
 	public void validarCandidato(CandidatoDTO dto) {
-		candidatoRepository.findByCpf(dto.getCpf());
+		if(candidatoRepository.findByCpf(dto.getCpf()).isPresent()) {
+			throw new BusinessException("Ja existe um candidato com o cpf informado!");
+		}
 
 		if (Objects.isNull(dto)) {
 			throw new BusinessException("O candidato não pode ser nulo!");

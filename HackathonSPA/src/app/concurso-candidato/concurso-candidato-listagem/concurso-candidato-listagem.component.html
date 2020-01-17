@@ -23,11 +23,11 @@
 </table>
 </div>
 
-<div id="modalNota" class="modal" *ngIf="exibirModal">
+<div id="modalNota" class="modalNota" *ngIf="exibirModal">
     <div class="modal-content">
         <h5>Insira a nota do Candidato {{concursoCandidato.nomeCandidato}}</h5>
         <input type="number" id="nota" name="nota" [(ngModel)]="concursoCandidato.nota">
-        <button class="btn red darken-4 z-depth-5" (click)="atualizarNota(concursoCandidato.nota)">
+        <button class="btn waves-effect waves-light z-depth-5" (click)="atualizarNota(concursoCandidato.nota)">
             atualizar
         </button>
         <button class="btn black z-depth-5" (click)="exibirModalNota(null)">
