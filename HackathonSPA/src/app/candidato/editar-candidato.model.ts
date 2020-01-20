@@ -1,8 +1,7 @@
 export class Candidato {
     id: number;
-    nome: String;
-    cpf: String;
-    cidade: String;
-    senha: String;
- 
-}
+    nome: string;
+    cpf: string;
+    cidade: string;
+    senha: string;
+ }

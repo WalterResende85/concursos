@@ -9,11 +9,15 @@ import { Concurso } from './editar-concurso.model';
   templateUrl: './editar-concurso.component.html',
   styleUrls: ['./editar-concurso.component.scss']
 })
+
 export class EditarConcursoComponent implements OnInit {
   id: number;
   concurso: Concurso;
-  erroCampoNulo: String;
-  constructor(private concursoService: ConcursoService, private route: ActivatedRoute, private router: Router) { }
+  erroCampoNulo: string;
+  constructor(
+    private concursoService: ConcursoService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     this.concurso = new Concurso();
@@ -21,20 +25,20 @@ export class EditarConcursoComponent implements OnInit {
     this.buscar(this.id);
 
   }
-  buscar(id: number) {
-    return this.concursoService.buscar(this.id).subscribe(resposta => {
 
+  public buscar(id: number) {
+    return this.concursoService.buscar(id).subscribe(resposta => {
       this.concurso = resposta;
     });
   }
-  atualizar(concurso: Concurso) {
+
+  public atualizar(concurso: Concurso) {
     if (this.concurso.nome == null || this.concurso.quantidadeVagas == null) {
-      alert("Não é possivel cadastrar um concurso com campo nulo");
+      alert('Não é possivel cadastrar um concurso com campo nulo');
     }
     if (this.concurso.quantidadeVagas < 1) {
-      alert("A quantidade de vagas deve ser maior que 0");
-    }
-    else {
+      alert('A quantidade de vagas deve ser maior que 0');
+    } else {
       this.concursoService.atualizar(concurso.id, concurso).subscribe(() => {
         this.router.navigate(['/concursos']);
         alert(`O concurso ${this.concurso.nome} foi salvo com sucesso`);
@@ -43,8 +47,6 @@ export class EditarConcursoComponent implements OnInit {
           this.erroCampoNulo = error.error;
         }
       );
-    
     }
-
   }
 }

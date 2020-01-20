@@ -1,5 +1,5 @@
-export class Concurso{
+export class Concurso {
     id: number;
-    nome: String;
+    nome: string;
     quantidadeVagas: number;
 }

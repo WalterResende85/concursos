@@ -8,11 +8,13 @@ import { Candidato } from '../candidato/editar-candidato.model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   candidato: Candidato;
   mostrarmenuEmmiter = new EventEmitter<boolean>();
-  candidatoAutenticado: boolean = false;
-  constructor(private candidatoService: CandidatoService,
+  candidatoAutenticado = false;
+  constructor(
+    private candidatoService: CandidatoService,
     private router: Router,
     private toasterService: ToasterService
   ) { }
@@ -22,7 +24,7 @@ export class AuthService {
     this.candidatoService.logar(candidato).subscribe(data => {
       this.candidatoAutenticado = true;
       this.mostrarmenuEmmiter.emit(true);
-      this.toasterService.pop("sucess", `${data.body.nome} logado`);
+      this.toasterService.pop('sucess', `${data.body.nome} logado`);
       this.router.navigate(['/home']);
     },
       error => {

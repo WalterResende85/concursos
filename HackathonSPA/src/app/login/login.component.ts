@@ -11,13 +11,14 @@ import { ToasterService } from 'angular2-toaster';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
   classBody: any;
   candidato: Candidato = new Candidato();
-  erroCampoNulo: String;
-  autenticacao: Boolean = false;
-  constructor(private candidatoService: CandidatoService,
-    private router: Router,
+  erroCampoNulo: string;
+  autenticacao = false;
+  constructor(
+    private candidatoService: CandidatoService,
     private authService: AuthService,
     private toasterService: ToasterService) { }
 
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   }
   public logar() {
-    if (this.candidato.cpf == null || this.candidato.senha == null || this.candidato.senha == "") {
+    if (this.candidato.cpf == null || this.candidato.senha == null || this.candidato.senha === '') {
       this.toasterService.pop('error', 'Os campos não podem ser nulos');
     } else {
       this.authService.logar(this.candidato);
@@ -44,10 +45,10 @@ export class LoginComponent implements OnInit {
   }
 
   public formlogin() {
-    this.classBody = "sign-in-js";
+    this.classBody = 'sign-in-js';
   }
   public formCadastro() {
-    this.classBody = "sign-up-js";
+    this.classBody = 'sign-up-js';
   }
 
 }

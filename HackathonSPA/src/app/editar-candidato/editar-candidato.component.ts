@@ -1,9 +1,8 @@
 
-import { CandidatoService } from '../candidato/candidato.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CandidatoService } from '../candidato/candidato.service';
 import { Candidato } from '../candidato/editar-candidato.model';
-import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-editar-candidato',
@@ -13,9 +12,12 @@ import { FormGroup } from '@angular/forms';
 export class EditarCandidatoComponent implements OnInit {
   id: number;
   candidato: Candidato;
-  erroCampoNulo:String
+  erroCampoNulo: string;
 
-  constructor(private CandidatoService: CandidatoService, private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private candidatoService: CandidatoService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     this.candidato = new Candidato();
@@ -24,23 +26,20 @@ export class EditarCandidatoComponent implements OnInit {
 
   }
 
-  buscar(id: number) {
-    return this.CandidatoService.buscar(id).subscribe(resposta => {
+  public buscar(id: number) {
+    return this.candidatoService.buscar(id).subscribe(resposta => {
       this.candidato = resposta;
     });
   }
 
-  atualizar() {
-    this.CandidatoService.atualizar(this.candidato).subscribe(() =>{
+  public atualizar() {
+    this.candidatoService.atualizar(this.candidato).subscribe(() => {
       this.router.navigate(['/candidatos']);
       alert(`O candidato ${this.candidato.nome} foi salvo com sucesso`);
     },
-        error => {
+      error => {
         this.erroCampoNulo = error.error;
       }
-    
-    
     );
-  
   }
 }

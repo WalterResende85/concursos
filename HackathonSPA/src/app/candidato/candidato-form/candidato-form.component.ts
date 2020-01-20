@@ -12,8 +12,8 @@ import { ToasterService } from 'angular2-toaster';
 })
 export class CandidatoFormComponent implements OnInit {
   candidato: any;
-  erroCampoNulo: String;
-  CandidatoCadastrado: String;
+  erroCampoNulo: string;
+  CandidatoCadastrado: string;
   constructor(
     private candidatoService: CandidatoService,
     private router: Router,
@@ -25,7 +25,7 @@ export class CandidatoFormComponent implements OnInit {
   public salvar() {
     this.candidatoService.salvar(this.candidato).subscribe(data => {
       this.router.navigate(['/candidatos']);
-      this.toasterService.pop('success', `O candidato ${this.candidato.nome} foi salvo com sucesso`)
+      this.toasterService.pop('success', `O candidato ${this.candidato.nome} foi salvo com sucesso`);
       this.candidato = new Candidato();
     },
       error => {
@@ -33,6 +33,4 @@ export class CandidatoFormComponent implements OnInit {
       }
     );
   }
-
-
 }

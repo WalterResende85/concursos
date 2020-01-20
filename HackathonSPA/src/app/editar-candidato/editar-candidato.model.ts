@@ -1,7 +1,7 @@
 export class Candidato {
     id: number;
-    nome: String;
-    cpf: String;
-    cidade: String;
- 
+    nome: string;
+    cpf: string;
+    cidade: string;
 }
+

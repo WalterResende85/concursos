@@ -22,7 +22,6 @@ const ConcursoRoutes: Routes = [
 @NgModule({
      imports: [
           RouterModule.forChild(ConcursoRoutes),
-
      ],
      exports: [RouterModule]
 })

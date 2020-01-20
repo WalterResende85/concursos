@@ -12,8 +12,9 @@ import { ToasterService } from 'angular2-toaster';
 })
 export class ConcursoFormComponent implements OnInit {
   concurso: Concurso = new Concurso();
-  erroCampoNulo: String;
-  constructor(private concursoService: ConcursoService,
+  erroCampoNulo: string;
+  constructor(
+    private concursoService: ConcursoService,
     private router: Router,
     private toasterService: ToasterService
   ) { }
@@ -27,17 +28,15 @@ export class ConcursoFormComponent implements OnInit {
     }
     if (this.concurso.quantidadeVagas < 1) {
       this.toasterService.pop('error', 'A quantidade de vagas deve ser maior que 0');
-    }
-    else {
+    } else {
       this.concursoService.salvar(this.concurso).subscribe(() => {
         this.router.navigate(['/concursos']);
-        this.toasterService.pop('success', `O concurso ${this.concurso.nome} foi salvo com sucesso`)
+        this.toasterService.pop('success', `O concurso ${this.concurso.nome} foi salvo com sucesso`);
       },
         error => {
-          this.toasterService.pop('error', `${error.error}`);  
+          this.toasterService.pop('error', `${error.error}`);
         }
       );
-
     }
   }
 

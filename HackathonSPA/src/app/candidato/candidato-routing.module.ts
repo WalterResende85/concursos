@@ -4,8 +4,6 @@ import { AuthGuard } from '../guards/auth.guard';
 import { CandidatoFormComponent } from './candidato-form/candidato-form.component';
 import { CandidatosListagemComponent } from './candidatos-listagem/candidatos-listagem.component';
 
-
-
 const candidatoRoutes: Routes = [
     {
         path: '',
@@ -20,11 +18,11 @@ const candidatoRoutes: Routes = [
     }
 
 ];
-    @NgModule({
-    imports:[
+@NgModule({
+    imports: [
         RouterModule.forChild(candidatoRoutes),
-       
     ],
-    exports:[RouterModule]
+    exports: [RouterModule]
 })
-export class CandidatoRoutingModule{}
+
+export class CandidatoRoutingModule { }

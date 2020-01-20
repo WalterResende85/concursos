@@ -1,20 +1,20 @@
 
 import { Component, OnInit } from '@angular/core';
-import { ConcursoService } from '../concurso.service';
-import { Concurso } from '../../editar-concurso/editar-concurso.model';
-import { ConcursoCandidatoService } from '../../concurso-candidato/concurso-candidato.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { CandidatoService } from '../../candidato/candidato.service';
 import { Candidato } from '../../candidato/editar-candidato.model';
 import { ConcursoCandidato } from '../../concurso-candidato/concurso-candidato-listagem/concurso-candidato-listagem.model';
-import { FormsModule } from "@angular/forms";
-import { Observable } from 'rxjs';
+import { ConcursoCandidatoService } from '../../concurso-candidato/concurso-candidato.service';
+import { Concurso } from '../../editar-concurso/editar-concurso.model';
+import { ConcursoService } from '../concurso.service';
 
 @Component({
   selector: 'app-concursos-listagem',
   templateUrl: './concursos-listagem.component.html',
   styleUrls: ['./concursos-listagem.component.scss']
 })
+
 export class ConcursosListagemComponent implements OnInit {
   concursos: Observable<Concurso[]>;
   exibirModal: boolean = false;
@@ -23,7 +23,9 @@ export class ConcursosListagemComponent implements OnInit {
   concursoCandidato: ConcursoCandidato = new ConcursoCandidato();
   candidatos: Observable<Candidato[]>;
   candidato: Candidato;
-  constructor(private concursoService: ConcursoService,
+
+  constructor(
+    private concursoService: ConcursoService,
     private concursoCandidatoService: ConcursoCandidatoService,
     private router: Router,
     private candidatoService: CandidatoService) { }
@@ -33,7 +35,7 @@ export class ConcursosListagemComponent implements OnInit {
 
   }
   public listarCandidatosPorConcurso(id: number) {
-    this.router.navigate(['concursoCandidato', id])
+    this.router.navigate(['concursoCandidato', id]);
   }
   public listar() {
     this.concursoService.listar().subscribe(dados => {
@@ -46,8 +48,8 @@ export class ConcursosListagemComponent implements OnInit {
   }
   public remover() {
     this.concursoService.remover(this.concurso.id).subscribe(() => {
-        this.toggleModalExcluir(null);
-      });
+      this.toggleModalExcluir(null);
+    });
   }
   public toggleModalExcluir(concurso: Concurso) {
     this.concurso = concurso;
@@ -67,7 +69,7 @@ export class ConcursosListagemComponent implements OnInit {
   public InscreverCandidato(idConcurso: number) {
     this.concursoCandidato.idConcurso = idConcurso;
     this.concursoCandidatoService.salvar(this.concursoCandidato).subscribe(() => {
-      this.router.navigate(['concursoCandidato', idConcurso])
+      this.router.navigate(['concursoCandidato', idConcurso]);
     });
   }
 }

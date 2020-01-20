@@ -22,6 +22,6 @@ import { CandidatosListagemComponent } from './candidatos-listagem/candidatos-li
   providers: [
     NgxMaskModule
   ],
-
 })
+
 export class CandidatoModule { }

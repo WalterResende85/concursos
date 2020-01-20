@@ -7,13 +7,12 @@ import { AuthService } from '../login/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  mostrarMenu: boolean = false;
+  mostrarMenu: boolean;
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    
+
     this.authService.mostrarmenuEmmiter.subscribe(mostrar => {
-     console.log(mostrar);
       this.mostrarMenu = mostrar;
     }
 

@@ -3,10 +3,10 @@ export class ConcursoCandidato {
     idConcurso: number;
     nota: number;
 
-    nomeCandidato: String;
-    cpf: String;
-    cidade: String;
+    nomeCandidato: string;
+    cpf: string;
+    cidade: string;
 
-    nomeConcurso: String;
+    nomeConcurso: string;
     quantidadeVagas: number;
 }
