@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CandidatoService } from '../candidato/candidato.service';
 import { Candidato } from '../candidato/editar-candidato.model';
 
+const ID = 'id';
+
 @Component({
   selector: 'app-editar-candidato',
   templateUrl: './editar-candidato.component.html',
@@ -21,7 +23,7 @@ export class EditarCandidatoComponent implements OnInit {
 
   ngOnInit() {
     this.candidato = new Candidato();
-    this.id = this.route.snapshot.params['id'];
+    this.id = this.route.snapshot.params[ID];
     this.buscar(this.id);
 
   }

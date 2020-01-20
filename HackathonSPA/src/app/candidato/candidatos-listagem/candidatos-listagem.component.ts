@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 export class CandidatosListagemComponent implements OnInit {
 
   candidatos: Observable<Candidato[]>;
-  exibirModal: boolean = false;
+  exibirModal = false;
   candidato: Candidato;
 
   constructor(private candidatoService: CandidatoService, private router: Router) { }

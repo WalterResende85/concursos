@@ -3,7 +3,7 @@ import { ConcursoService } from '../concurso/concurso.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Concurso } from './editar-concurso.model';
 
-
+const ID = 'id';
 @Component({
   selector: 'app-editar-concurso',
   templateUrl: './editar-concurso.component.html',
@@ -21,7 +21,7 @@ export class EditarConcursoComponent implements OnInit {
 
   ngOnInit() {
     this.concurso = new Concurso();
-    this.id = this.route.snapshot.params['id'];
+    this.id = this.route.snapshot.params[ID];
     this.buscar(this.id);
 
   }

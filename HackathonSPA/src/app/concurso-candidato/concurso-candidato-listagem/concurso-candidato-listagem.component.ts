@@ -5,16 +5,18 @@ import { ConcursoCandidatoService } from '../concurso-candidato.service';
 import { ConcursoCandidato } from './concurso-candidato-listagem.model';
 
 
+const ID = 'id';
 @Component({
   selector: 'app-concurso-candidato-listagem',
   templateUrl: './concurso-candidato-listagem.component.html',
   styleUrls: ['./concurso-candidato-listagem.component.scss']
 })
+
 export class ConcursoCandidatoListagemComponent implements OnInit {
   concursoCandidatos: Array<any>;
   concursoCandidato: ConcursoCandidato = new ConcursoCandidato();
   id: number;
-  exibirModal: boolean = false;
+  exibirModal = false;
 
   constructor(
     private concursoCandidatoService: ConcursoCandidatoService,
@@ -23,7 +25,7 @@ export class ConcursoCandidatoListagemComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.id = this.route.snapshot.params['id'];
+    this.id = this.route.snapshot.params[ID];
     this.listarCandidatosPorConcurso(this.id);
   }
 

@@ -17,8 +17,8 @@ import { ConcursoService } from '../concurso.service';
 
 export class ConcursosListagemComponent implements OnInit {
   concursos: Observable<Concurso[]>;
-  exibirModal: boolean = false;
-  exibirModalIncreverCandidato: boolean = false;
+  exibirModal = false;
+  exibirModalIncreverCandidato = false;
   concurso: Concurso;
   concursoCandidato: ConcursoCandidato = new ConcursoCandidato();
   candidatos: Observable<Candidato[]>;
