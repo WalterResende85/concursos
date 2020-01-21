@@ -8,9 +8,10 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 
 const AppRoutes: Routes = [
+    { path: '', redirectTo: '', pathMatch: 'full', canActivate: [AuthGuard]},
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-    { path: 'candidatos', loadChildren: './candidato/candidato.module#CandidatoModule' },
-    { path: 'concursos', loadChildren: './concurso/concurso.module#ConcursoModule' },
+    { path: 'candidatos', loadChildren: './candidato/candidato.module#CandidatoModule', canActivate: [AuthGuard] },
+    { path: 'concursos', loadChildren: './concurso/concurso.module#ConcursoModule', canActivate: [AuthGuard] },
     {
         path: 'editarCandidato/:id',
         component: EditarCandidatoComponent,

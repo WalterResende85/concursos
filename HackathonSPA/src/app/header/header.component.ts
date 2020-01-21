@@ -11,12 +11,8 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-
-    this.authService.mostrarmenuEmmiter.subscribe(mostrar => {
-      this.mostrarMenu = mostrar;
-    }
-
-    );
   }
-
+  public verificarAuteticacao(): boolean {
+    return this.authService.candidatoEstaAutenticado();
+  }
 }

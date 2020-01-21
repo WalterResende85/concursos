@@ -12,16 +12,16 @@
             <div class="second-column">
                 <h2 class="title title-second">Criar conta</h2>
                 <div class="input-field col s6">
-                    <input [(ngModel)]="candidato.nome" id="nome" name="nome" type="text" class="validate">
-                    <label for="nome">Nome</label>
+                    <input [(ngModel)]="candidato.nome" placeholder="NOME"id="nome" name="nome" type="text" class="validate">
+                    
                 </div>
                 <div class="input-field">
-                    <input [(ngModel)]="candidato.cpf" id="cpf" name="cpf" [clearIfNotMatch]="true" type="text" mask="000.000.000-99" class="validate">
-                    <label for="cpf">CPF</label>
+                    <input [(ngModel)]="candidato.cpf" placeholder="CPF" id="cpf" name="cpf" [clearIfNotMatch]="true" type="text" mask="000.000.000-99" class="validate">
+                   
                 </div>
                 <div class="input-field col s6">
-                    <input [(ngModel)]="candidato.senha" id="senha" name="senha" type="password" class="validate">
-                    <label for="senha">Senha</label>
+                    <input [(ngModel)]="candidato.senha" placeholder="SENHA" id="senha" name="senha" type="password" class="validate">
+                    
                 </div>
                 <button class="btn blue darken-4 z-depth-5" (click)="cadastrar()">Cadastrar</button>
             </div>
@@ -36,13 +36,13 @@
             <div class="second-column">
                 <h2 class="title title-second">Conecte-se com a gente!</h2>
                 <div class="input-field col s6">
-                    <input [(ngModel)]="candidato.cpf" id="cpfLogin" name="cpfLogin" [clearIfNotMatch]="true" type="text" mask="000.000.000-99" class="validate">
-                    <label for="cpfLogin">CPF</label>
+                    <input [(ngModel)]="candidato.cpf" placeholder="CPF" id="cpfLogin" name="cpfLogin" [clearIfNotMatch]="true" type="text" mask="000.000.000-99" class="validate">
+                    
                 </div>
                 <div class="input-field col s6">
-                    <input [(ngModel)]="candidato.senha" id="senhaLogin" name="senhaLogin" type="password"
+                    <input [(ngModel)]="candidato.senha" placeholder="SENHA" id="senhaLogin" name="senhaLogin" type="password"
                         class="validate">
-                    <label for="senhaLogin">Senha</label>
+                    
                 </div>
                 <a class="password" href="#">Esqueceu a senha?</a>
                 <button class="btn blue darken-4 z-depth-5" (click)="logar()">logar</button>

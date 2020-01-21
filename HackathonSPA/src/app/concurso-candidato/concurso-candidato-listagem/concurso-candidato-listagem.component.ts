@@ -41,6 +41,7 @@ export class ConcursoCandidatoListagemComponent implements OnInit {
   }
 
   public atualizarNota(nota: number) {
+    debugger;
     if (nota > 0 && nota <= 100) {
       this.concursoCandidato.nota = nota;
       this.concursoCandidatoService.atualizar(this.concursoCandidato.idCandidato,

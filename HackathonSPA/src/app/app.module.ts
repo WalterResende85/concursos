@@ -20,6 +20,7 @@ import { CandidatoService } from './candidato/candidato.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToasterModule, ToasterService } from 'angular2-toaster';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StorageServiceModule } from 'angular-webstorage-service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    StorageServiceModule
   ],
   providers: [
     CandidatoService,

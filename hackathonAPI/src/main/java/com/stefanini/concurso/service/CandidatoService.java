@@ -1,6 +1,5 @@
 package com.stefanini.concurso.service;
 
-import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.BeanUtils;
