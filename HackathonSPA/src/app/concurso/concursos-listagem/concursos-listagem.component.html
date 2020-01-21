@@ -4,7 +4,7 @@
 </head>
 
 <body >
-    <div class="container light-blue lighten-5">
+    <div class="container grey lighten-3 z-depth-5">
         <div>
             <a routerLink="cadastrar" class="btn waves-effect waves-light z-depth-5">Novo Concurso</a>
         </div>
@@ -47,7 +47,7 @@
     </div>
 
     <div id="modalIncreverCandidato" class="modal" *ngIf="exibirModalIncreverCandidato">
-        <div class="modalIncreverCandidato-content">
+        <div class="candidato">
             <h5>Cadatrar Candidato no concurso {{concurso.nome}}</h5>
             <div class="form-group">
                 <label for="candidato">Candidatos</label>
@@ -58,18 +58,18 @@
             <button class="btn waves-effect waves-light z-depth-5" (click)="InscreverCandidato(concurso.id)">
                 Cadastrar
             </button>
-            <button class="btn black z-depth-5" (click)="toggleModalIncreverCandidato(null)">
+            <button class="btn black z-depth-5 right" (click)="toggleModalIncreverCandidato(null)">
                 Fechar
             </button>
         </div>
     </div>
     <div id="modalRemover" class="modal" *ngIf="exibirModal">
-        <div class="modal-content">
+        <div class="candidato">
             <h5>Deseja mesmo remover o concurso {{concurso.nome}} ?</h5>
             <button class="btn red darken-4 z-depth-5" (click)="remover()">
                 Remover
             </button>
-            <button class="btn black z-depth-5" (click)="toggleModalExcluir(null)">
+            <button class="btn black z-depth-5 right" (click)="toggleModalExcluir(null)">
                 Fechar
             </button>
         </div>

@@ -2,8 +2,8 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
-<body>
-<div class="container blue lighten-5 z-depth-5">
+
+<div class="container grey lighten-3 z-depth-5">
     <h5>Detalhes do concurso</h5>
 <table class="table">
     <tr>
@@ -24,15 +24,14 @@
 </div>
 
 <div id="modalNota" class="modal" *ngIf="exibirModal">
-    <div class="modalNota">
+    <div class="modalNota z-depth-5">
         <h5>Insira a nota do Candidato {{concursoCandidato.nomeCandidato}}</h5>
         <input type="number" id="nota" name="nota" #nota [ngModel]="concursoCandidato.nota">
         <button class="btn waves-effect waves-light z-depth-5" (click)="atualizarNota(nota.value)">
             Atualizar
         </button>
-        <button class="btn black z-depth-5" (click)="exibirModalNota(null)">
+        <button class="btn black z-depth-5 right" (click)="exibirModalNota(null)">
             Fechar
         </button>
     </div>
 </div>
-</body>
